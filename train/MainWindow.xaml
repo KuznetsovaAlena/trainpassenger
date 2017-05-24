@@ -5,25 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:train"
         mc:Ignorable="d"
-        Title="MainWindow" Height="378.345" Width="554.577">
+        Title="Information" Height="403.568" Width="664.759">
     <Grid>
-        <ComboBox x:Name="departure" HorizontalAlignment="Left" Height="17" Margin="25,65,0,0" VerticalAlignment="Top" Width="113">
+
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFA4DCE8" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <ComboBox x:Name="departure" HorizontalAlignment="Left" Height="20" Margin="25,85,0,0" VerticalAlignment="Top" Width="113" Grid.ColumnSpan="2">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFE0EFFB" Offset="0.5"/>
+                    <GradientStop Color="#FF228FEA" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
             <TextBlock Text="Архангельск"/>
             <TextBlock Text="Воронеж"/>
             <TextBlock Text="Москва"/>
             <TextBlock Text="Орёл"/>
             <TextBlock Text="Санкт-Петербург"/>
         </ComboBox>
-        <ComboBox x:Name="arrival" HorizontalAlignment="Left" Height="17" Margin="162,65,0,0" VerticalAlignment="Top" Width="106">
+        <ComboBox x:Name="arrival" HorizontalAlignment="Left" Height="20" Margin="208,85,0,0" VerticalAlignment="Top" Width="113">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFE0EFFB" Offset="0.5"/>
+                    <GradientStop Color="#FF228FEA" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
             <TextBlock Text="Норильск"/>
             <TextBlock Text="Мурманск"/>
             <TextBlock Text="Ростов"/>
             <TextBlock Text="Калининград"/>
             <TextBlock Text="Краснодар"/>
         </ComboBox>
-        <TextBlock x:Name="from" HorizontalAlignment="Left" Height="13" Margin="25,47,0,0" TextWrapping="Wrap" Text="Отправление" VerticalAlignment="Top" Width="113"/>
-        <TextBlock x:Name="to" HorizontalAlignment="Left" Height="13" Margin="162,47,0,0" TextWrapping="Wrap" Text="Прибытие" VerticalAlignment="Top" Width="106"/>
-        <ComboBox x:Name="date" HorizontalAlignment="Left" Height="17" Margin="25,127,0,0" VerticalAlignment="Top" Width="96">
+        <TextBlock x:Name="from" Margin="25,61,519,0" TextWrapping="Wrap" Text="Отправление" Height="23" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16" TextDecorations="{x:Null}" TextAlignment="Center"  />
+        <TextBlock x:Name="to" HorizontalAlignment="Left" Height="23" Margin="208,61,0,0" TextWrapping="Wrap" Text="Прибытие" VerticalAlignment="Top" Width="106" FontFamily="Times New Roman" FontSize="16" TextAlignment="Center"/>
+        <ComboBox x:Name="date" HorizontalAlignment="Left" Height="20" Margin="25,140,0,0" VerticalAlignment="Top" Width="96">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFE0EFFB" Offset="0.5"/>
+                    <GradientStop Color="#FF228FEA" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
             <TextBlock Text="19.06.2017"/>
             <TextBlock Text="20.06.2017"/>
             <TextBlock Text="21.06.2017"/>
@@ -33,17 +64,28 @@
             <TextBlock Text="25.06.2017"/>
         </ComboBox>
 
-        <ComboBox x:Name="number" HorizontalAlignment="Left" Height="16" Margin="25,262,0,0" VerticalAlignment="Top" Width="81">
-            
-           
+        <ComboBox x:Name="number" HorizontalAlignment="Left" Height="20" Margin="25,295,0,0" VerticalAlignment="Top" Width="81" Grid.ColumnSpan="2" RenderTransformOrigin="0.5,0.5">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFE0EFFB" Offset="0.5"/>
+                    <GradientStop Color="#FF228FEA" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+
+
         </ComboBox>
-        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Height="15" Margin="100,27,0,0" TextWrapping="Wrap" Text="Информация о пассажирах" VerticalAlignment="Top" Width="335"/>
-        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Height="15" Margin="29,107,0,0" TextWrapping="Wrap" Text="Дата" VerticalAlignment="Top" Width="92"/>
-        <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Height="14" Margin="27,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79"><Run Text="Номер "/><Run Text="поезда"/></TextBlock>
-        <DataGrid x:Name="info" HorizontalAlignment="Left" Height="155" Margin="194,123,0,0" VerticalAlignment="Top" Width="280"/>
-        <Button x:Name="show" Content="Показать" HorizontalAlignment="Left" Height="19" Margin="25,307,0,0" VerticalAlignment="Top" Width="135" Click="show_Click"/>
-        <Button x:Name="conf" Content="Подтвердить" HorizontalAlignment="Left" Height="19" Margin="31,189,0,0" VerticalAlignment="Top" Width="90" Click="conf_Click"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="19" Margin="282,307,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="174"/>
+        <TextBlock x:Name="textBlock2"  Height="25" Margin="136,10,137,0" TextWrapping="Wrap" Text="Информация о пассажирах" VerticalAlignment="Top" Width="384" TextAlignment="Center" FontSize="18" FontWeight="Bold" FontFamily="Times New Roman"/>
+        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Height="25" Margin="25,115,0,0" TextWrapping="Wrap" Text="Дата" VerticalAlignment="Top" Width="92" TextAlignment="Center" FontSize="16"/>
+        <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Height="19" Margin="10,0,0,79" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="113" FontSize="16" FontFamily="Times New Roman" TextAlignment="Center"><Run Text="Номер "/><Run Text="поезда"/></TextBlock>
+        <DataGrid x:Name="info"  Margin="208,127,35,115" Background="#FFCDCDCD"/>
+        <Button x:Name="show" Content="Показать" HorizontalAlignment="Left" Height="22" Margin="25,334,0,0" VerticalAlignment="Top" Width="152" Click="show_Click"/>
+        <Button x:Name="conf" Content="Подтвердить" Margin="25,178,480,0" Click="conf_Click" Height="24" VerticalAlignment="Top"/>
+        <TextBox x:Name="quest" HorizontalAlignment="Left" Height="19" Margin="448,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
+        <TextBlock x:Name="add" HorizontalAlignment="Left" Height="44" Margin="10,227,0,0" TextWrapping="Wrap" Text="Далее выберите номер поезда" VerticalAlignment="Top" Width="179" FontSize="15" TextAlignment="Center" FontStyle="Italic" FontFamily="Times New Roman" Foreground="#FF20357C"/>
+        <TextBlock x:Name="srch" HorizontalAlignment="Left" Height="18" Margin="448,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" FontSize="16" FontFamily="Times New Roman" TextAlignment="Center"><Run Text="Поиск"/><Run Text=" по фамилии"/></TextBlock>
+        <Button x:Name="search" Content="Найти" HorizontalAlignment="Left" Height="22" Margin="496,334,0,0" VerticalAlignment="Top" Width="88" Click="search_Click"/>
 
     </Grid>
 </Window>

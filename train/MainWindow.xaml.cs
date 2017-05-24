@@ -25,30 +25,6 @@ namespace train
         public MainWindow()
         {
             InitializeComponent();
-        }
-        List<Passenger> Pass = new List<Passenger>();
-        List<Passenger> Passengers = new List<Passenger>();
-        private void show_Click(object sender, RoutedEventArgs e)
-        {
-           
-            foreach (Passenger p in Passengers)
-            {
-                if ((p.Departure == departure.Text)&(p.Arrival == arrival.Text)&(p.Date == date.Text)&(p.Numtrain==number.Text))
-                {
-                    Pass.Add(p);
-                }
-            }
-
-            info.ItemsSource = Pass;
-            
-            
-        }
-
-
-        private void conf_Click(object sender, RoutedEventArgs e)
-        {
-
-            
             using (StreamReader sr = new StreamReader("base.txt"))
                 while (!sr.EndOfStream)
                 {
@@ -59,16 +35,46 @@ namespace train
                     string name = line.Split('/')[1];
                     string patro = line.Split('/')[2];
                     string date = line.Split('/')[3];
-                    string numtrain = line.Split('/')[4];
-                    uint numcar = uint.Parse(line.Split('/')[5]);
+                    string train = line.Split('/')[4];
+                    uint carriage = uint.Parse(line.Split('/')[5]);
                     uint seat = uint.Parse(line.Split('/')[6]);
                     string departure = line.Split('/')[7];
                     string arrival = line.Split('/')[8];
 
-                    Passengers.Add(new Passenger(surname, name, patro, date, numtrain, numcar, seat, departure, arrival));
+                    Passengers.Add(new Passenger(surname, name, patro, date, train, carriage, seat, departure, arrival));
                 }
-            
+        }
+
+        List<Passenger> Pass = new List<Passenger>();
+        List<Passenger> Passengers = new List<Passenger>();
+       
+        private void show_Click(object sender, RoutedEventArgs e)
+        {
+           
+            foreach (Passenger p in Passengers)
+            {
+                if ((p.Departure == departure.Text)&(p.Arrival == arrival.Text)&(p.Date == date.Text)&(p.Train==number.Text))
+                {
+                    Pass.Add(p);
+                }
+            }
+            info.ItemsSource = null;
+            info.ItemsSource = Pass;
+
+            departure.Text=null;
+            arrival.Text=null;
+            date.Text=null;
+            number.ItemsSource = null;
+            Train_number.Clear();
+        }
+        List<string> Train_number = new List<string>();
+
+        private void conf_Click(object sender, RoutedEventArgs e)
+        {
             List<string> Train_number = new List<string>();
+            
+            
+           
 
             foreach (Passenger p in Passengers)
             {
@@ -78,24 +84,59 @@ namespace train
                     {
                         if (p.Date == date.Text)
                         {
-                            Train_number.Add(p.Numtrain);
+                            Train_number.Add(p.Train);
+                           
                         }
                     }
-                    }
                 }
+            }
             if (Train_number.Count==0)
 
             {
 
                 MessageBox.Show("Такого поезда нет!");
             }
-            for (int i = 0; i < Train_number.Count; i++)
-            {
-                number.Items.Add(Train_number[i]);
-            }
+
+
             
+                number.ItemsSource=Train_number;
+            
+
+        }
+
+        private void search_Click(object sender, RoutedEventArgs e)
+        {
+            {
+
+                List<Passenger> Search = new List<Passenger>();
+                for (int i = 0; i < Pass.Count; i++)
+                {
+                    if (Pass[i].Surname == quest.Text)
+
+                    {
+                        MessageBox.Show("Информация о пассажире: " + quest.Text + " " + Pass[i].Name + " " + Pass[i].Patronymic +"\nДата отправления: " + Pass[i].Date + "\nНомер поезда: " + Pass[i].Train + "\nВагон: " + Pass[i].Carriage.ToString() + "\nМесто: "+Pass[i].Seat.ToString()+"\nОтправка: "+Pass[i].Departure+"\nПрибытие: "+Pass[i].Arrival);
+                        Search.Add(Pass[i]);
+                        return;
+
+                    }
+
+                    if (string.IsNullOrWhiteSpace(quest.Text))
+
+                    {
+                        MessageBox.Show("Введите фамилию!");
+                        return;
+
+                    }
+
+                }
+                if (Search.Count == 0)
+                {
+                    MessageBox.Show("Такого пассажира нет! Попробуйте ещё раз!");
+                    return;
+                }
             }
         }
+    }
     }
     
 

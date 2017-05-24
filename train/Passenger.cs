@@ -26,7 +26,7 @@ namespace train
 
         private string patro;
 
-        public string Patro
+        public string Patronymic
         {
             get { return patro; }
             set { patro = value; }
@@ -40,20 +40,20 @@ namespace train
             set { date = value; }
         }
 
-        private string numtrain;
+        private string train;
 
-        public string Numtrain
+        public string Train
         {
-            get { return numtrain; }
-            set { numtrain = value; }
+            get { return train; }
+            set { train = value; }
         }
 
-        private uint numcar;
+        private uint carriage;
 
-        public uint Numcar
+        public uint Carriage
         {
-            get { return numcar; }
-            set { numcar = value; }
+            get { return carriage; }
+            set { carriage = value; }
         }
 
         private uint seat;
@@ -80,14 +80,14 @@ namespace train
             set { arrival = value; }
         }
 
-        public Passenger(string _surname, string _name, string _patro, string _date, string _numtrain, uint _numcar, uint _seat, string _departure, string _arrival)
+        public Passenger(string _surname, string _name, string _patro, string _date, string _train, uint _carriage, uint _seat, string _departure, string _arrival)
         {
             surname = _surname;
             name = _name;
             patro = _patro;
             date = _date;
-            numtrain = _numtrain;
-            numcar = _numcar;
+            train = _train;
+            carriage = _carriage;
             seat = _seat;
             departure = _departure;
             arrival = _arrival;
