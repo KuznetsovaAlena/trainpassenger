@@ -25,7 +25,7 @@ namespace train
         public MainWindow()
         {
             InitializeComponent();
-            using (StreamReader sr = new StreamReader("base.txt"))
+            using (StreamReader sr = new StreamReader("../../base.txt",Encoding.GetEncoding(1251)))
                 while (!sr.EndOfStream)
                 {
 
@@ -47,13 +47,13 @@ namespace train
 
         List<Passenger> Pass = new List<Passenger>();
         List<Passenger> Passengers = new List<Passenger>();
-       
+
         private void show_Click(object sender, RoutedEventArgs e)
         {
-           
+
             foreach (Passenger p in Passengers)
             {
-                if ((p.Departure == departure.Text)&(p.Arrival == arrival.Text)&(p.Date == date.Text)&(p.Train==number.Text))
+                if ((p.Departure == departure.Text) & (p.Arrival == arrival.Text) & (p.Date == date.Text) & (p.Train == number.Text))
                 {
                     Pass.Add(p);
                 }
@@ -61,9 +61,9 @@ namespace train
             info.ItemsSource = null;
             info.ItemsSource = Pass;
 
-            departure.Text=null;
-            arrival.Text=null;
-            date.Text=null;
+            departure.Text = null;
+            arrival.Text = null;
+            date.Text = null;
             number.ItemsSource = null;
             Train_number.Clear();
         }
@@ -72,9 +72,9 @@ namespace train
         private void conf_Click(object sender, RoutedEventArgs e)
         {
             List<string> Train_number = new List<string>();
-            
-            
-           
+
+
+
 
             foreach (Passenger p in Passengers)
             {
@@ -85,12 +85,12 @@ namespace train
                         if (p.Date == date.Text)
                         {
                             Train_number.Add(p.Train);
-                           
+
                         }
                     }
                 }
             }
-            if (Train_number.Count==0)
+            if (Train_number.Count == 0)
 
             {
 
@@ -98,9 +98,9 @@ namespace train
             }
 
 
-            
-                number.ItemsSource=Train_number;
-            
+
+            number.ItemsSource = Train_number;
+
 
         }
 
@@ -114,7 +114,7 @@ namespace train
                     if (Pass[i].Surname == quest.Text)
 
                     {
-                        MessageBox.Show("Информация о пассажире: " + quest.Text + " " + Pass[i].Name + " " + Pass[i].Patronymic +"\nДата отправления: " + Pass[i].Date + "\nНомер поезда: " + Pass[i].Train + "\nВагон: " + Pass[i].Carriage.ToString() + "\nМесто: "+Pass[i].Seat.ToString()+"\nОтправка: "+Pass[i].Departure+"\nПрибытие: "+Pass[i].Arrival);
+                        MessageBox.Show("Информация о пассажире: " + quest.Text + " " + Pass[i].Name + " " + Pass[i].Patronymic + "\nДата отправления: " + Pass[i].Date + "\nНомер поезда: " + Pass[i].Train + "\nВагон: " + Pass[i].Carriage.ToString() + "\nМесто: " + Pass[i].Seat.ToString() + "\nОтправка: " + Pass[i].Departure + "\nПрибытие: " + Pass[i].Arrival);
                         Search.Add(Pass[i]);
                         return;
 
@@ -136,7 +136,23 @@ namespace train
                 }
             }
         }
+
+        private void editor_Click(object sender, RoutedEventArgs e)
+        { using (FileStream fs = new FileStream("../../base.txt", FileMode.Create))
+            { using (StreamWriter sw = new StreamWriter(fs, Encoding.GetEncoding(1251)))
+                {
+                    for (int i = 0; i < Passengers.Count; i++)
+                    {
+                        sw.Write(Passengers[i].Surname.ToString() + "/" + Passengers[i].Name.ToString() + "/" + Passengers[i].Patronymic.ToString() + "/" + Passengers[i].Date.ToString() + "/" + Passengers[i].Train.ToString() + "/" + Passengers[i].Carriage.ToString() + "/" + Passengers[i].Seat.ToString() + "/" + Passengers[i].Departure.ToString() + '/' + Passengers[i].Arrival.ToString());
+                        sw.WriteLine();
+                    }
+                }
+
+        }
     }
+
+        }
     }
+    
     
 

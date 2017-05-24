@@ -86,6 +86,7 @@
         <TextBlock x:Name="add" HorizontalAlignment="Left" Height="44" Margin="10,227,0,0" TextWrapping="Wrap" Text="Далее выберите номер поезда" VerticalAlignment="Top" Width="179" FontSize="15" TextAlignment="Center" FontStyle="Italic" FontFamily="Times New Roman" Foreground="#FF20357C"/>
         <TextBlock x:Name="srch" HorizontalAlignment="Left" Height="18" Margin="448,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" FontSize="16" FontFamily="Times New Roman" TextAlignment="Center"><Run Text="Поиск"/><Run Text=" по фамилии"/></TextBlock>
         <Button x:Name="search" Content="Найти" HorizontalAlignment="Left" Height="22" Margin="496,334,0,0" VerticalAlignment="Top" Width="88" Click="search_Click"/>
+        <Button x:Name="editor" Content="Редактировать" HorizontalAlignment="Left" Margin="271,334,0,0" VerticalAlignment="Top" Width="122" Click="editor_Click"/>
 
     </Grid>
 </Window>
