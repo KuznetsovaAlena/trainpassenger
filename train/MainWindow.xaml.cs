@@ -25,24 +25,7 @@ namespace train
         public MainWindow()
         {
             InitializeComponent();
-            using (StreamReader sr = new StreamReader("../../base.txt",Encoding.GetEncoding(1251)))
-                while (!sr.EndOfStream)
-                {
 
-                    string line = sr.ReadLine();
-
-                    string surname = line.Split('/')[0];
-                    string name = line.Split('/')[1];
-                    string patro = line.Split('/')[2];
-                    string date = line.Split('/')[3];
-                    string train = line.Split('/')[4];
-                    uint carriage = uint.Parse(line.Split('/')[5]);
-                    uint seat = uint.Parse(line.Split('/')[6]);
-                    string departure = line.Split('/')[7];
-                    string arrival = line.Split('/')[8];
-
-                    Passengers.Add(new Passenger(surname, name, patro, date, train, carriage, seat, departure, arrival));
-                }
         }
 
         List<Passenger> Pass = new List<Passenger>();
@@ -50,7 +33,7 @@ namespace train
 
         private void show_Click(object sender, RoutedEventArgs e)
         {
-
+            Pass.Clear();
             foreach (Passenger p in Passengers)
             {
                 if ((p.Departure == departure.Text) & (p.Arrival == arrival.Text) & (p.Date == date.Text) & (p.Train == number.Text))
@@ -74,21 +57,48 @@ namespace train
             List<string> Train_number = new List<string>();
 
 
+            int k = 0;
 
+            Passengers.Clear();
+            using (StreamReader sr = new StreamReader("../../base.txt", Encoding.GetEncoding(1251)))
+                while (!sr.EndOfStream)
+                {
+
+                    string line = sr.ReadLine();
+
+                    string surname = line.Split('/')[0];
+                    string name = line.Split('/')[1];
+                    string patro = line.Split('/')[2];
+                    string date = line.Split('/')[3];
+                    string train = line.Split('/')[4];
+                    uint carriage = uint.Parse(line.Split('/')[5]);
+                    uint seat = uint.Parse(line.Split('/')[6]);
+                    string departure = line.Split('/')[7];
+                    string arrival = line.Split('/')[8];
+
+                    Passengers.Add(new Passenger(surname, name, patro, date, train, carriage, seat, departure, arrival));
+                }
 
             foreach (Passenger p in Passengers)
             {
-                if (p.Departure == departure.Text)
-                {
-                    if (p.Arrival == arrival.Text)
-                    {
-                        if (p.Date == date.Text)
-                        {
-                            Train_number.Add(p.Train);
+                if ((p.Departure == departure.Text) & (p.Arrival == arrival.Text) & (p.Date == date.Text))
+                { k = 0;
+                    for (int i = 0; i < Train_number.Count; i++)
+                    
+                     
 
+                        if (p.Train == Train_number[i])
+                        {
+                            k++;
                         }
-                    }
+
+                        if (k == 0)
+
+                            Train_number.Add(p.Train);
+                    
+
                 }
+
             }
             if (Train_number.Count == 0)
 
@@ -104,42 +114,19 @@ namespace train
 
         }
 
-        private void search_Click(object sender, RoutedEventArgs e)
+        private void searchwindow_Click(object sender, RoutedEventArgs e)
         {
-            {
 
-                List<Passenger> Search = new List<Passenger>();
-                for (int i = 0; i < Pass.Count; i++)
-                {
-                    if (Pass[i].Surname == quest.Text)
+            Search Search = new Search();
+            Search.Show();
 
-                    {
-                        MessageBox.Show("Информация о пассажире: " + quest.Text + " " + Pass[i].Name + " " + Pass[i].Patronymic + "\nДата отправления: " + Pass[i].Date + "\nНомер поезда: " + Pass[i].Train + "\nВагон: " + Pass[i].Carriage.ToString() + "\nМесто: " + Pass[i].Seat.ToString() + "\nОтправка: " + Pass[i].Departure + "\nПрибытие: " + Pass[i].Arrival);
-                        Search.Add(Pass[i]);
-                        return;
-
-                    }
-
-                    if (string.IsNullOrWhiteSpace(quest.Text))
-
-                    {
-                        MessageBox.Show("Введите фамилию!");
-                        return;
-
-                    }
-
-                }
-                if (Search.Count == 0)
-                {
-                    MessageBox.Show("Такого пассажира нет! Попробуйте ещё раз!");
-                    return;
-                }
-            }
         }
 
         private void editor_Click(object sender, RoutedEventArgs e)
-        { using (FileStream fs = new FileStream("../../base.txt", FileMode.Create))
-            { using (StreamWriter sw = new StreamWriter(fs, Encoding.GetEncoding(1251)))
+        {
+            using (FileStream fs = new FileStream("../../base.txt", FileMode.Create))
+            {
+                using (StreamWriter sw = new StreamWriter(fs, Encoding.GetEncoding(1251)))
                 {
                     for (int i = 0; i < Passengers.Count; i++)
                     {
@@ -148,11 +135,39 @@ namespace train
                     }
                 }
 
+            }
+            MessageBox.Show("Изменения сохранены!");
         }
+
+        private void deletion_Click(object sender, RoutedEventArgs e)
+        {
+            int ind = info.SelectedIndex + 1;
+
+            if (ind == 0)
+                MessageBox.Show("Выберите пассажира!");
+            else
+            {
+                MessageBoxResult result;
+                result = MessageBox.Show("Вы уверены, что хотите удалить пассажира " + Pass[ind - 1].Surname + " " + Pass[ind - 1].Name + " " + Pass[ind - 1].Patronymic + "?", "Удаление элемента", MessageBoxButton.OKCancel);
+
+                if (result == MessageBoxResult.OK)
+                {
+                    
+                            Pass.RemoveAt(ind - 1);
+                    
+                        info.ItemsSource = null;
+                        info.Columns.Clear();
+                        info.ItemsSource = Pass;
+                    }
+                }
+
+            }
+
+       
     }
 
-        }
     }
+
     
     
 

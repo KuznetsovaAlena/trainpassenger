@@ -79,14 +79,13 @@
         <TextBlock x:Name="textBlock2"  Height="25" Margin="136,10,137,0" TextWrapping="Wrap" Text="Информация о пассажирах" VerticalAlignment="Top" Width="384" TextAlignment="Center" FontSize="18" FontWeight="Bold" FontFamily="Times New Roman"/>
         <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Height="25" Margin="25,115,0,0" TextWrapping="Wrap" Text="Дата" VerticalAlignment="Top" Width="92" TextAlignment="Center" FontSize="16"/>
         <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Height="19" Margin="10,0,0,79" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="113" FontSize="16" FontFamily="Times New Roman" TextAlignment="Center"><Run Text="Номер "/><Run Text="поезда"/></TextBlock>
-        <DataGrid x:Name="info"  Margin="208,127,35,115" Background="#FFCDCDCD"/>
+        <DataGrid x:Name="info"  Margin="208,127,34,79" Background="#FFCDCDCD"/>
         <Button x:Name="show" Content="Показать" HorizontalAlignment="Left" Height="22" Margin="25,334,0,0" VerticalAlignment="Top" Width="152" Click="show_Click"/>
         <Button x:Name="conf" Content="Подтвердить" Margin="25,178,480,0" Click="conf_Click" Height="24" VerticalAlignment="Top"/>
-        <TextBox x:Name="quest" HorizontalAlignment="Left" Height="19" Margin="448,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
         <TextBlock x:Name="add" HorizontalAlignment="Left" Height="44" Margin="10,227,0,0" TextWrapping="Wrap" Text="Далее выберите номер поезда" VerticalAlignment="Top" Width="179" FontSize="15" TextAlignment="Center" FontStyle="Italic" FontFamily="Times New Roman" Foreground="#FF20357C"/>
-        <TextBlock x:Name="srch" HorizontalAlignment="Left" Height="18" Margin="448,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" FontSize="16" FontFamily="Times New Roman" TextAlignment="Center"><Run Text="Поиск"/><Run Text=" по фамилии"/></TextBlock>
-        <Button x:Name="search" Content="Найти" HorizontalAlignment="Left" Height="22" Margin="496,334,0,0" VerticalAlignment="Top" Width="88" Click="search_Click"/>
-        <Button x:Name="editor" Content="Редактировать" HorizontalAlignment="Left" Margin="271,334,0,0" VerticalAlignment="Top" Width="122" Click="editor_Click"/>
+        <Button x:Name="searchwindow" Content="Поиск по фамилии" HorizontalAlignment="Left" Height="22" Margin="396,83,0,0" VerticalAlignment="Top" Width="192" Click="searchwindow_Click" Background="#FF3DE080"/>
+        <Button x:Name="editor" Content="Редактировать" HorizontalAlignment="Left" Margin="232,334,0,0" VerticalAlignment="Top" Width="149" Click="editor_Click" Background="#FFD4F1CF"/>
+        <Button x:Name="deletion" Content="Удалить" HorizontalAlignment="Left" Height="22" Margin="451,334,0,0" VerticalAlignment="Top" Width="137" Click="deletion_Click" Background="#FFD4F1CF"/>
 
     </Grid>
 </Window>
